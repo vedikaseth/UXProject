@@ -1,0 +1,88 @@
+<html>
+<head>
+<script src="d3\d3.js"></script>
+<script>
+var svgContainer = d3.select("body").append("svg")
+                                    .attr("width", 200)
+                                     .attr("height", 200);
+
+//Draw the Rectangle
+var rectangle = svgContainer.append("rect")
+                            .attr("x", 10)
+                            .attr("y", 10)
+                            .attr("width", 50)
+                            .attr("height", 100);
+var data = [
+      {
+        "label": "One",
+        "value" : 29.765957771107
+      } ,
+      {
+        "label": "Two",
+        "value" : 0
+      } ,
+      {
+        "label": "Three",
+        "value" : 32.807804682612
+      } ,
+      {
+        "label": "Four",
+        "value" : 196.45946739256
+      } ,
+      {
+        "label": "Five",
+        "value" : 0.19434030906893
+      } ,
+      {
+        "label": "Six",
+        "value" : 98.079782601442
+      } ,
+      {
+        "label": "Seven",
+        "value" : 13.925743130903
+      } ,
+      {
+        "label": "Eight",
+        "value" : 5.1387322875705
+      }
+]							
+//Regular pie chart example
+d3.addGraph(function() {
+  var chart = nv.models.pieChart()
+      .x(function(d) { return d.label })
+      .y(function(d) { return d.value })
+      .showLabels(true);
+
+    d3.select("#chart svg")
+        .datum(data)
+      .transition().duration(1200)
+        .call(chart);
+
+  return chart;
+});
+
+
+</script>
+
+</head>
+<body>
+<svg width="50" height="50">
+  <rect x="0" y="0" width="50" height="50" fill="green" />
+</svg>
+
+<style>
+
+#chart svg {
+  height: 400px;
+}
+
+</style>
+
+
+<div id="chart">
+  <svg></svg>
+</div>
+
+</body>
+
+</html>
