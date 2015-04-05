@@ -4,21 +4,9 @@
         <meta charset="utf-8">
         <title>D3 Test</title>
         <script type="text/javascript" src="d3/d3.v3.js"></script>
-		<!--style type="text/css">
-		div.bar {
-			display: inline-block;
-			width: 20px;
-			height: 75px;   /* We'll override this later */
-			background-color: teal;
-			margin-right: 2px;
-		}
+		<style type="text/css">
 		
-				.pumpkin {
-			fill: yellow;
-			stroke: orange;
-			stroke-width: 5;
-		 }
-		</style>-->
+		</style>
     </head>
     <body>
 		 <!--<svg width="500" height="80">
@@ -38,8 +26,9 @@
 			var w = 500;
 			var h = 200;
 			var barPadding = 1;
+			var imageHeight=50;
             // Your beautiful D3 code will go here
-			var dataset = [ 25, 7, 35,5, 26, 11];
+			var dataset = [ 25, 7, 35,5, 26, 11,33,12];
 			
 			var svg = d3.select("body")
             .append("svg")
@@ -92,10 +81,12 @@
 					return (i * (w / dataset.length)) ;//+((w / dataset.length - barPadding) /2.5);
 				})
                 .attr("y", function(d) {
-					return h - d*4 -50;  //Height minus data value
+					return h - d*4 -imageHeight;  //Height minus data value
 				})
                 .attr("width", w / dataset.length - barPadding)
-                .attr("height", "50");
+                .attr("height", imageHeight);
+				
+		
         </script>
 		
     </body>
