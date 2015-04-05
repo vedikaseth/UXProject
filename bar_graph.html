@@ -51,7 +51,7 @@
 			   .data(dataset)
 			   .enter()
                .append('svg:image')
-               .attr("xlink:href", "vertical_pencil.gif")
+               .attr("xlink:href", "flame-icon.jpg")
                .attr("x", function(d, i) {
 					return i * (w / dataset.length);
 				})
@@ -63,7 +63,8 @@
 					return "rgb(0, 0, " + (d * 10) + ")";
 				})
 			   .attr("height", function(d) {
-					return 4*d;
+					if (d < 15){return 7*d}
+                    else {return 4*d};
 				})
 				.attr("fill", function(d) {
 					return "rgb(0, 0, " + (d * 10) + ")";
