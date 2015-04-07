@@ -110,7 +110,7 @@
 					
 			   })
 			   .on("click", function() {
-			   		sortBars();
+			   		window.open("http://www.google.com","_blank");
 			   });
 			svg.selectAll("text")
 			   .data(dataset)
@@ -129,9 +129,7 @@
 			   .attr("font-size", "11px")
 			   .attr("fill", "white");
 			//   var dataset = [ 5, 10, 15, 20, 25 ];
-			</script>
-			before img
-			<script>
+			
 			var imgs = svg.selectAll("image").data(dataset);
                 imgs.enter()
                 .append("svg:image")
