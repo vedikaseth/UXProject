@@ -11,12 +11,15 @@
         .slice text {
             font-size: 12pt;
             font-family: Arial;
-			fill: white;
+			fill: blue;
         }  
 			
     </style>
   </head>
   <body>
+  <center><h1>Story 2</h1>
+  Percentage of incidents managed by each platoon
+  </center>
     <script type="text/javascript">
 
     var w = 300,                        //width
@@ -74,11 +77,11 @@
                 .attr("d", arc)                                    //this creates the actual SVG path using the associated data (pie) with the arc drawing function
 				.on("click",function(d,i){
 					if(i==0)
-						location="shreya.html";
+						location="index.html";
 					if(i==1)
 						location="index.html";
 					if(i==2)
-						location="index1.html";
+						location="index.html";
 				})
 				.on("mouseover", function() {
 					d3.select(this)
@@ -120,19 +123,19 @@
    <svg id="mySvg" width="80" height="80">
       <defs id="mdef">
         <pattern id="image1" x="0" y="0" height="100%" width="100%">
-          <image x="0" y="0" width="150" height="180" xlink:href="pizza_topping.png"></image>
+          <image x="0" y="0" width="150" height="180" xlink:href="images/pie/pizza_topping.png"></image>
 		  </pattern>
 		  <pattern id="image2" x="0" y="0" height="100%" width="100%">
-          <image x="0" y="-40" width="150" height="180" xlink:href="cookie_chip.png"></image>
+          <image x="0" y="-40" width="150" height="180" xlink:href="images/pie/cookie_chip.png"></image>
 		  </pattern>
 		  <pattern id="image3" x="0" y="0" height="100%" width="100%">
-          <image x="-40" y="-70" width="300" height="300" xlink:href="burger.jpg"></image>
+          <image x="-40" y="-70" width="300" height="300" xlink:href="images/pie/burger.jpg"></image>
 		  </pattern>
 		  <pattern id="image4" x="0" y="0" height="100" width="100">
-          <image x="0" y="0" width="150" height="180" xlink:href="donut.png"></image>
+          <image x="0" y="0" width="150" height="180" xlink:href="images/pie/donut.png"></image>
 		  </pattern>
 		  <pattern id="image5" x="0" y="0" height="100" width="100">
-          <image x="0" y="0" width="150" height="180" xlink:href="cookie_chip.png"></image>
+          <image x="0" y="0" width="150" height="180" xlink:href="images/pie/cookie_chip.png"></image>
 		  </pattern>
 	  </defs>
   </body>
