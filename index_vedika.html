@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>Infographic time line</title>
+		<script src='http://d3js.org/d3.v2.js'></script>
+		<style>
+.chart {
+
+}
+
+.main text {
+    font: 10px sans-serif;	
+}
+
+.axis line, .axis path {
+    shape-rendering: crispEdges;
+    stroke: black;
+    fill: none;
+}
+
+circle {
+    fill: url("#image");
+	stroke: red;
+	stroke-width=1;
+	
+}
+
+.rect1 {
+    fill: url("#morn");	
+	fill-opacity:0.55;
+}
+.rect2 {
+    fill: url("#noon");	
+	fill-opacity:0.55;
+}
+.rect3 {
+    fill: url("#eve");
+	fill-opacity:0.55;	
+}
+
+</style>
+	</head>
+	<body>
+	
+		<script type="text/javascript">
+		
+
+		var data = [[5,3], [10,14], [15,3], [2,8], [6,3], [7,14], [22,3], [20,3]];
+   
+    var margin = {top: 20, right: 15, bottom: 60, left: 60}
+      , width = 960 - margin.left - margin.right
+      , height = 500 - margin.top - margin.bottom;
+    
+    var x = d3.scale.linear()
+              .domain([0, 24])
+              .range([ 0, width ]);
+	
+    
+    var y = d3.scale.linear()
+    	      .domain([0, 17])
+    	      .range([ height, 0 ]);
+ 
+    var chart = d3.select('body')
+	.append('svg:svg')
+	.attr('width', width + margin.right + margin.left)
+	.attr('height', height + margin.top + margin.bottom)
+	.attr('class', 'chart')
+
+    var main = chart.append('g')
+	.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+	.attr('width', width)
+	.attr('height', height)
+	.attr('class', 'main')   
+        
+    // draw the x axis
+    var xAxis = d3.svg.axis()
+	.scale(x)
+	.orient('bottom');
+	xAxis.tickFormat( function(d) { if (d >= 0 && d < 12){ return d + " am";}
+										else { return d + " pm"; }})	  ;
+
+    main.append('g')
+	.attr('transform', 'translate(0,' + height + ')')
+	.attr('class', 'main axis date')
+	.call(xAxis);
+	main.append('g')
+	.attr('transform', 'translate(0,' + height/3 + ')')
+	.attr('class', 'main axis date')
+	.call(xAxis);
+	main.append('g')
+	.attr('transform', 'translate(0,' + 2*height/3 + ')')
+	.attr('class', 'main axis date')
+	.call(xAxis);
+
+    // draw the y axis
+    var yAxis = d3.svg.axis()
+	.scale(y)
+	.orient('left');
+	yAxis.tickFormat("");
+
+    main.append('g')
+	.attr('transform', 'translate(0,0)')
+	.attr('class', 'main axis date')
+	.call(yAxis);
+	
+	var img_g=main.append("svg:g");
+	img_g.append("svg:rect")
+			        .attr('width', width/4)
+                    .attr('height', height)
+					.attr('rx', 0)
+					.attr('class', 'rect3');
+	img_g.append("svg:rect")
+					.attr('transform', 'translate('+(width/4)+',0)')
+			        .attr('width', width/4)
+                    .attr('height', height)
+					.attr('rx', 0)
+					.attr('class', 'rect1');
+	img_g.append("svg:rect")
+					.attr('transform', 'translate('+(width/2)+',0)')
+			        .attr('width', width/4)
+                    .attr('height', height)
+					.attr('class', 'rect2');
+	img_g.append("svg:rect")
+					.attr('transform', 'translate('+(3*width/4)+',0)')
+			        .attr('width', width/4)
+                    .attr('height', height)
+					.attr('class', 'rect3');
+    var g = main.append("svg:g"); 
+    
+    g.selectAll("scatter-dots")
+      .data(data)
+      .enter().append("svg:circle")
+          .attr("cx", function (d,i) { return x(d[0]); } )
+          .attr("cy", function (d) { return y(d[1]); } )
+          .attr("r", 15);
+		  
+		
+	
+			
+	
+		</script>
+	<svg>
+      <defs>
+        <pattern  id="image"  height="100%" width="100%"
+        patternContentUnits="objectBoundingBox">
+            <image height="1" width="1" xlink:href="D:\Study\UX\UXProject\images\timeline\Fire.png"></image>
+        </pattern>
+        <pattern id="morn"  height="100%" width="100%"
+        patternContentUnits="objectBoundingBox">
+            <image height="1" width="1" preserveAspectRatio="none" xlink:href="D:\Study\UX\UXProject\images\timeline\morning.jpg"></image>
+        </pattern>
+		<pattern id="noon"  height="100%" width="100%"
+        patternContentUnits="objectBoundingBox">
+            <image height="1" width="1" preserveAspectRatio="none" xlink:href="D:\Study\UX\UXProject\images\timeline\afternoon.jpg"></image>
+        </pattern>
+		<pattern id="eve"  height="100%" width="100%"
+        patternContentUnits="objectBoundingBox">
+            <image height="1" width="1" preserveAspectRatio="none" xlink:href="D:\Study\UX\UXProject\images\timeline\night.jpg"></image>
+        </pattern>
+	</defs>
+	</svg>
+	
+	</body>
+</html>
