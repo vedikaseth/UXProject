@@ -9,6 +9,14 @@ cursor: hand;
 	
     margin-bottom: 0;
 }
+.box{
+    width:200px;
+    float:left; 
+}
+.box1{
+    width:200px;
+    float:right; 
+}
 </style>
 
 <script src="d3\d3.js"></script>
@@ -21,8 +29,10 @@ var ele1 = document.getElementById("nodata");
 ele1.style.display = "block";
 var ele2= document.getElementById("datatd");
 ele2.style.width = "2%";
+ele.style.valign="top";
 var ele3 = document.getElementById("canvastd");
 ele3.style.width = "83%";
+
 
 }
 function show_data(){
@@ -411,20 +421,24 @@ $('#bar_modal').on('hidden.bs.modal', function (e) {
 
 
 </td>
-<td  width="70%" id="canvastd" valign="top" height="100%">
-<br><center><div border="1px solid black" >
-  WORKING CANVAS <br><br>
+<td  width="70%" id="canvastd" valign="top" height="500">
+<br><div border="1px solid black" width="100%" height="100%">
+  <center>WORKING CANVAS <br><br></center>
   <!-- Title  -->
 <input type="text" name="title" value="Sample Title"><br>
 
-</div></center>
+<iframe src="basicmap.html" style="border:none" width="48%" height="100%"></iframe>
+<iframe src="shreya_image_pizza.html" style="border:none" height="100%" width="48%"></iframe>
+<iframe src="tooltipjuhi.html" style="border:none" height="100%" width="47%"></iframe>
+<iframe src="bar_graph.html" style="border:none" height="100%" width="48%"></iframe>
+
 </td>
 <td  width="15%"  height="100%" id="datatd" style="background-color:#E0E0FF" height="100%" >
 	
 	<div id="data" width="100%" height="616" >
 		<table  width="100%" height="616"  >
 			<tr  width="100%" height="616" >
-				<td  width="3%" height="100%" valign="center" >
+				<td  width="3%" height="100%" valign="top" >
 					
 					<img onclick="hide_data();" src="images\dashboard\hide.png" height="15" width="10"   /> 
 					

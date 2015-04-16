@@ -77,7 +77,8 @@
                 .attr("d", arc)                                    //this creates the actual SVG path using the associated data (pie) with the arc drawing function
 				.on("click",function(d,i){
 					if(i==0)
-						location="index.html";
+						//location="index.html";
+						window.open("index.html","_blank")
 					if(i==1)
 						location="index.html";
 					if(i==2)

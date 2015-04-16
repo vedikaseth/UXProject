@@ -9,6 +9,14 @@ cursor: hand;
 	
     margin-bottom: 0;
 }
+.box{
+    width:200px;
+    float:left; 
+}
+.box1{
+    width:200px;
+    float:right; 
+}
 </style>
 
 <script src="d3\d3.js"></script>
@@ -411,13 +419,15 @@ $('#bar_modal').on('hidden.bs.modal', function (e) {
 
 
 </td>
-<td  width="70%" id="canvastd" valign="top" height="100%">
-<br><center><div border="1px solid black" >
-  WORKING CANVAS <br><br>
+<td  width="70%" id="canvastd" valign="top" height="500">
+<br><div border="1px solid black" width="100%" height="100%">
+  <center>WORKING CANVAS <br><br></center>
   <!-- Title  -->
 <input type="text" name="title" value="Sample Title"><br>
 
-</div></center>
+<iframe src="basicmap.html" style="border:none" width="48%" height="100%"></iframe>
+<iframe src="shreya_image_pizza.html" style="border:none" height="100%" width="48%"></iframe>
+
 </td>
 <td  width="15%"  height="100%" id="datatd" style="background-color:#E0E0FF" height="100%" >
 	
