@@ -401,8 +401,10 @@ $('#bar_modal').on('hidden.bs.modal', function (e) {
 	  
       </div>
       <div class="modal-footer"><center>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" >Insert</button></center>
+        <form method='get'>
+		<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" formaction="dashboard_samplemap.html" class="btn btn-primary" >Insert</button>
+		</form></center>
       </div>
     </div>
   </div>
