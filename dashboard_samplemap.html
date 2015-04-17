@@ -194,11 +194,6 @@ $('#bar_modal').on('hidden.bs.modal', function (e) {
   // do something...
   reset_option('bar');
 })
-
-$('#pie_modal').on('hidden.bs.modal', function (e) {
-  // do something...
-  reset_option('bar');
-})
 </script>
 <link href="bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -406,10 +401,8 @@ $('#pie_modal').on('hidden.bs.modal', function (e) {
 	  
       </div>
       <div class="modal-footer"><center>
-        <form method='get'>
-		<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="submit" formaction="dashboard_samplemap.html" class="btn btn-primary" >Insert</button>
-		</form></center>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" >Insert</button></center>
       </div>
     </div>
   </div>
@@ -423,6 +416,7 @@ $('#pie_modal').on('hidden.bs.modal', function (e) {
   WORKING CANVAS <br><br>
   <!-- Title  -->
 <input type="text" name="title" value="Sample Title"><br>
+<img src="images\dashboard\map.png">
 
 </div></center>
 </td>

@@ -194,11 +194,6 @@ $('#bar_modal').on('hidden.bs.modal', function (e) {
   // do something...
   reset_option('bar');
 })
-
-$('#pie_modal').on('hidden.bs.modal', function (e) {
-  // do something...
-  reset_option('bar');
-})
 </script>
 <link href="bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -406,10 +401,8 @@ $('#pie_modal').on('hidden.bs.modal', function (e) {
 	  
       </div>
       <div class="modal-footer"><center>
-        <form method='get'>
-		<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="submit" formaction="dashboard_samplemap.html" class="btn btn-primary" >Insert</button>
-		</form></center>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" >Insert</button></center>
       </div>
     </div>
   </div>
@@ -418,13 +411,14 @@ $('#pie_modal').on('hidden.bs.modal', function (e) {
 
 
 </td>
-<td  width="70%" id="canvastd" valign="top" height="100%">
-<br><center><div border="1px solid black" >
-  WORKING CANVAS <br><br>
+<td  width="70%" id="canvastd" valign="top" height="500">
+<br><div border="1px solid black" width="100%" height="100%">
+  <center>WORKING CANVAS <br><br></center>
   <!-- Title  -->
 <input type="text" name="title" value="Sample Title"><br>
-
-</div></center>
+<iframe src="basicmap.html" width="50%" height="100%" style="border:none"></iframe>
+<!--iframe src="shreya_image_pizza.html" width="50%" height="100%"></iframe-->
+</div>
 </td>
 <td  width="15%"  height="100%" id="datatd" style="background-color:#E0E0FF" height="100%" >
 	
