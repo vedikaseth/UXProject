@@ -9,9 +9,20 @@ cursor: hand;
 	
     margin-bottom: 0;
 }
-</style>
 
+.myFrame {
+    width:100%;
+    height:100%;
+    background-color:#fff;
+}
+
+</style>
+<link href="jquery/jquery.contextMenu.css" rel="stylesheet">
 <script src="d3\d3.js"></script>
+<script src="jquery/external/jquery/jquery.js"></script>
+<script src="jquery/jquery-ui.js"></script>
+<script src="jquery/jquery.ui.position.js"></script>
+<script src="jquery/jquery.contextMenu.js"></script>
 <script>
 function hide_data(){
 
@@ -83,17 +94,10 @@ if(cur_chart == 'map'){
 	prev_ele.style.display = "block";
 	var text_ele = document.getElementById("map_text");
 	text_ele.textContent = "Map Of USA";
-	var prev_ele = document.getElementById("next_pie");
+	var prev_ele = document.getElementById("next_map");
 	prev_ele.style.display = "none";
 	}
-	/*else if(ele_img == 'stacked'){
-	ele.src="images\\dashboard\\bar_grouped.png"
-	ele.alt="grouped";
-	var prev_ele = document.getElementById("next_bar");
-	prev_ele.style.display = "none";
-	var text_ele = document.getElementById("bar_text");
-	text_ele.textContent = "Grouped Bar Graph";
-	}*/
+	
 }
 
 }
@@ -136,14 +140,7 @@ if(cur_chart == 'map'){
 	var text_ele = document.getElementById("map_text");
 	text_ele.textContent = "World Map";
 	}
-	/*else if(ele_img == 'grouped'){
-	ele.src="images\\dashboard\\bar_stacked.png"
-	ele.alt="stacked";
-	var prev_ele = document.getElementById("next_bar");
-	prev_ele.style.display = "block";
-	var text_ele = document.getElementById("bar_text");
-	text_ele.textContent = "Stacked Bar Graph";
-	}*/
+	
 }
 
 if(cur_chart == 'pie'){
@@ -162,9 +159,10 @@ if(cur_chart == 'pie'){
 }
 }
 
-function reset_option(cur_chart){
+function reset_option(chart){
 
-if(cur_chart == 'bar'){
+switch (chart) {
+case "bar":
 	var ele = document.getElementById("bar_chart");
 	ele.src="images\\dashboard\\bar_normal.png"
 	ele.alt="normal";
@@ -174,9 +172,9 @@ if(cur_chart == 'bar'){
 	prev_ele.style.display = "block";
 	var text_ele = document.getElementById("bar_text");
 	text_ele.textContent = "Normal Bar Graph";
-}
+	break;
 
-if(cur_chart == 'pie'){
+case "pie":
 	var ele = document.getElementById("pie_chart");
 	ele.src="images\\dashboard\\pie_normal.png"
 	ele.alt="normal";
@@ -186,21 +184,88 @@ if(cur_chart == 'pie'){
 	prev_ele.style.display = "block";
 	var text_ele = document.getElementById("pie_text");
 	text_ele.textContent = "Normal Pie Graph";
+	break;
+	
+case "map":
+	var ele = document.getElementById("map");
+	ele.src='images\\dashboard\\map_world.jpg'
+	ele.alt="world";
+	var prev_ele = document.getElementById("prev_map");
+	prev_ele.style.display = "none";
+	var prev_ele = document.getElementById("next_map");
+	prev_ele.style.display = "block";
+	var text_ele = document.getElementById("map_text");
+	text_ele.textContent = "World Map";
+	break;
 }
 
 }
 
-$('#bar_modal').on('hidden.bs.modal', function (e) {
-  // do something...
-  reset_option('bar');
-})
+$(document).ready(function() {
+        $(".draggableTB").draggable({
+			cancel: null,
+			cursor: "move",
+			containment: "#canvastd"
+        });
+		
+		 var counter = 1;
+	 
+		$("#addText").click(function () {
+					
+	    $('#TextBoxesGroup').append("<input class='draggableTB context-menu-one box menu-1' type='text' id='editBox"+counter+"'></input>");
+        $(".draggableTB").draggable({cancel: null,
+			cursor: "move",
+			containment: "#canvastd"});
+		
+		counter++;
+		 });
+		
+    });
+	
+$(function(){
+    $.contextMenu({
+        selector: '.context-menu-one', 
+        callback: function(key, options) {
+			 var m = "clicked: " + key;
+			 if(key == 'delete'){
+			 document.getElementById(options.$trigger.attr('id')).remove();
+			 }
+           
+        },
+        items: {
+            "edit": {name: "Edit", icon: "edit"},
+            "delete": {name: "Delete", icon: "delete"},
+           
+        }
+    });
+	
+	$.contextMenu({
+        selector: '.context-menu-two', 
+        callback: function(key, options) {
+			 var m = "clicked: " + key;
+			 if(key == 'delete'){
+			 document.getElementById(options.$trigger.attr('id')).remove();
+			 }
+           
+        },
+        items: {
+            "interact": {name: "Create Interaction", icon: "none"},
+            "delete": {name: "Delete", icon: "delete"},
+           
+        }
+    });
+   
+});
 
-$('#pie_modal').on('hidden.bs.modal', function (e) {
-  // do something...
-  reset_option('bar');
-})
+
+$(function () {
+    $(".frameWrap")
+    .resizable()
+	.draggable({ containment: "#canvastd",cursor: "move" });
+});
 </script>
 <link href="bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -216,6 +281,7 @@ $('#pie_modal').on('hidden.bs.modal', function (e) {
 			<li><a href="#"><img src="images\dashboard\download.png" height="20" width="20"></a></li>
             <li><a href="#"><img src="images\dashboard\help.png" height="20" width="20"></a></li>
 			<li><a href="#"><img src="images\dashboard\clipart.png" height="20" width="20"></a></li>
+			<li><a href="#" id="addText">Add Text</a></li>
           </ul>
 		  <ul class="nav navbar-nav navbar-right">
 			<li><a href="#">Sign Out</a></li>
@@ -265,7 +331,7 @@ $('#pie_modal').on('hidden.bs.modal', function (e) {
       </div>
       <div class="modal-footer"><center>
         <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset_option('bar');">Cancel</button>
-        <button type="button" class="btn btn-primary" onclick="reset_option('bar');">Insert</button></center>
+        <button type="button" class="btn btn-primary" >Insert</button></center>
       </div>
     </div>
   </div>
@@ -278,7 +344,7 @@ $('#pie_modal').on('hidden.bs.modal', function (e) {
        <center> <h4 class="modal-title" id="pie_modal_label">PIE TYPES</h4> </center>
       </div>
       <div class="modal-body">
-      <center> <span id="pie_text">Normal PIE Graph</span> </center><br><br>
+      <center> <span id="pie_text">Normal Pie Graph</span> </center><br><br>
 	 <table width="100%">
 	 <tr width="100%">
 	 <td width="3%"> <img src="images\dashboard\show.png" id="prev_pie" onclick="load_prev_img('pie');" height="15" width="10" style="display:none"/> </td> </td>
@@ -292,7 +358,7 @@ $('#pie_modal').on('hidden.bs.modal', function (e) {
 	  
       </div>
       <div class="modal-footer"><center>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset_option('pie');">Cancel</button>
         <button type="button" class="btn btn-primary" >Insert</button></center>
       </div>
     </div>
@@ -357,6 +423,7 @@ $('#pie_modal').on('hidden.bs.modal', function (e) {
 </div>
 
 <div class="modal fade" id="timeline_modal" tabindex="-1" role="dialog" aria-labelledby="timeline_modal_label" aria-hidden="true">
+
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -407,7 +474,7 @@ $('#pie_modal').on('hidden.bs.modal', function (e) {
       </div>
       <div class="modal-footer"><center>
         <form method='get'>
-		<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset_option('map');">Cancel</button>
         <button type="submit" formaction="dashboard_samplemap.html" class="btn btn-primary" >Insert</button>
 		</form></center>
       </div>
@@ -418,15 +485,28 @@ $('#pie_modal').on('hidden.bs.modal', function (e) {
 
 
 </td>
-<td  width="70%" id="canvastd" valign="top" height="100%">
-<br><center><div border="1px solid black" >
-  WORKING CANVAS <br><br>
-  <!-- Title  -->
-<input type="text" name="title" value="Sample Title"><br>
 
-</div></center>
+<td  width="70%" id="canvastd" valign="top" style="height: 100%">
+<br><center> WORKING CANVAS </center> 
+  
+  <!-- Title  -->
+<div id='TextBoxesGroup' >	
+		<!--<input type="text" id="textBox1"  class="draggableTB context-menu-one box menu-1" /> -->
+</div>
+
+ 
+
+
+<!-- Add frames here-->
+<div class="frameWrap" style="width: 50%; height: 350px;">
+<iframe src="basicmap.html" style="border:10px solid grey"  class="myFrame context-menu-two box menu-1" id="frame1"></iframe>
+</div><br>
+<div class="frameWrap" style="width: 50%; height: 350px;" >
+<iframe src="shreya_image_pizza.html" style="border:10px solid grey" class="myFrame context-menu-two box menu-1" id="frame2"></iframe>
+</div>
 </td>
-<td  width="15%"  height="100%" id="datatd" style="background-color:#E0E0FF" height="100%" >
+
+<td  width="15%"  height="100%" id="datatd" style="background-color:#E0E0FF" >
 	
 	<div id="data" width="100%" height="616" >
 		<table  width="100%" height="616"  >
@@ -450,7 +530,7 @@ $('#pie_modal').on('hidden.bs.modal', function (e) {
 </td>
 </tr>
 </table>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 <script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
 
 </body>
