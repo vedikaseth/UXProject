@@ -244,7 +244,8 @@ $(function(){
         callback: function(key, options) {
 			 var m = "clicked: " + key;
 			 if(key == 'delete'){
-			 document.getElementById(options.$trigger.attr('id')).remove();
+			 var eleid = options.$trigger.attr('id') + 'div'
+			 document.getElementById(eleid).remove();
 			 }
            
         },
@@ -498,10 +499,10 @@ $(function () {
 
 
 <!-- Add frames here-->
-<div class="frameWrap" style="width: 50%; height: 350px;">
+<div class="frameWrap" style="width: 50%; height: 350px;" id="frame1div">
 <iframe src="basicmap.html" style="border:10px solid grey"  class="myFrame context-menu-two box menu-1" id="frame1"></iframe>
 </div><br>
-<div class="frameWrap" style="width: 50%; height: 350px;" >
+<div class="frameWrap" style="width: 50%; height: 350px;" id="frame2div" >
 <iframe src="shreya_image_pizza.html" style="border:10px solid grey" class="myFrame context-menu-two box menu-1" id="frame2"></iframe>
 </div>
 </td>
