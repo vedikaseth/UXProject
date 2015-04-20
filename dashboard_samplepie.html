@@ -307,7 +307,8 @@ $(function () {
 			</div>
 			</li>
             <li><a href="#" data-toggle="modal" data-target="#pie_modal"><img src="images\dashboard\pie_icon.png" height="20" width="20">&nbsp;Pie</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#line_modal"><img src="images\dashboard\line_icon.jpg" height="20" width="20">&nbsp;Line</a></li>
+            <a href="dashboard_frame2new.html" ><img src="images/dashboard/piesidepanel.png" width="100%"/></a>
+			<li><a href="#" data-toggle="modal" data-target="#line_modal"><img src="images\dashboard\line_icon.jpg" height="20" width="20">&nbsp;Line</a></li>
 			<li><a href="#" data-toggle="modal" data-target="#scatter_modal"><img src="images\dashboard\scatter_icon.png" height="20" width="20">&nbsp;Scatter</a></li>
 			<li><a href="#" data-toggle="modal" data-target="#timeline_modal"><img src="images\dashboard\tt_icon.png" height="20" width="20">&nbsp;TimeLine</a></li>
 			<li><a href="#" data-toggle="modal" data-target="#map_modal"><img src="images\dashboard\map.png" height="20" width="20">&nbsp;Map</a></li>
@@ -483,7 +484,7 @@ $(function () {
       <div class="modal-footer"><center>
         <form method='get'>
 		<button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset_option('map');">Cancel</button>
-        <button type="submit" formaction="dashboard_map.html" class="btn btn-primary" >Insert</button>
+        <button type="submit" formaction="dashboard_samplemap.html" class="btn btn-primary" >Insert</button>
 		</form></center>
       </div>
     </div>
@@ -507,10 +508,10 @@ $(function () {
 
 <!-- Add frames here-->
 <div class="frameWrap" style="width: 50%; height: 350px;" id="frame1div">
-<!--iframe src="basicmap.html" style="border:10px solid grey"  class="myFrame context-menu-two box menu-1" id="frame1"></iframe-->
+<iframe src="basicmap.html" style="border:10px solid grey"  class="myFrame context-menu-two box menu-1" id="frame1"></iframe>
 </div><br>
 <div class="frameWrap" style="width: 420px; height: 480px;" id="frame2div" >
-<!--iframe src="shreya_firemencap_pie1.html" style="border:10px solid grey" class="myFrame context-menu-two box menu-1" id="frame2"></iframe-->
+<iframe src="shreya_sample_pie.html" style="border:10px solid grey" class="myFrame context-menu-two box menu-1" id="frame2"></iframe>
 </div>
 </td>
 
