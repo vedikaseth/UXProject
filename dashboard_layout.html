@@ -24,28 +24,28 @@ cursor: hand;
 <script src="jquery/jquery.ui.position.js"></script>
 <script src="jquery/jquery.contextMenu.js"></script>
 <script>
-function hide_data(){
+function hide_show_data(){
 
-var ele = document.getElementById("data");
-ele.style.display = "none";
-var ele1 = document.getElementById("nodata");
-ele1.style.display = "block";
+var ele = document.getElementById("showhide");
+var tag = ele.alt;
+if(tag == 'open'){
+ele.src="images\\dashboard\\show.png";
+ele.alt="close";
 var ele2= document.getElementById("datatd");
-ele2.style.width = "2%";
+ele2.style.display = "none";
 var ele3 = document.getElementById("canvastd");
 ele3.style.width = "83%";
-
 }
-function show_data(){
-
-var ele = document.getElementById("data");
-ele.style.display = "block";
-var ele1 = document.getElementById("nodata");
-ele1.style.display = "none";
+else if(tag == 'close'){
+ele.src="images\\dashboard\\hide.png";
+ele.alt="open";
 var ele2= document.getElementById("datatd");
-ele2.style.width = "15%";
+ele2.style.display = "block";
 var ele3 = document.getElementById("canvastd");
 ele3.style.width = "70%";
+}
+
+
 }
 
 function load_next_img(cur_chart){
@@ -244,12 +244,14 @@ $(function(){
         callback: function(key, options) {
 			 var m = "clicked: " + key;
 			 if(key == 'delete'){
-			 document.getElementById(options.$trigger.attr('id')).remove();
+			 var eleid = options.$trigger.attr('id') + 'div'
+			 document.getElementById(eleid).remove();
 			 }
            
         },
         items: {
             "interact": {name: "Create Interaction", icon: "none"},
+			"edit": {name: "Edit", icon: "edit"},
             "delete": {name: "Delete", icon: "delete"},
            
         }
@@ -280,8 +282,8 @@ $(function () {
 			<li><a href="#"><img src="images\dashboard\save.png" height="20" width="20"></a></li>
 			<li><a href="#"><img src="images\dashboard\download.png" height="20" width="20"></a></li>
             <li><a href="#"><img src="images\dashboard\help.png" height="20" width="20"></a></li>
-			<li><a href="#"><img src="images\dashboard\clipart.png" height="20" width="20"></a></li>
 			<li><a href="#" id="addText">Add Text</a></li>
+			<li><a href="#" id="addText">Add Tool-Tip</a></li>
           </ul>
 		  <ul class="nav navbar-nav navbar-right">
 			<li><a href="#">Sign Out</a></li>
@@ -297,7 +299,13 @@ $(function () {
       <span class="row">
       
           <ul class="nav nav-sidebar" >
-            <li><a href="#" data-toggle="modal" data-target="#bar_modal" ><img src="images\dashboard\bar_icon.png "  height="20" width="20">&nbsp;Bar</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#bar_modal" ><img src="images\dashboard\bar_icon.png "  height="20" width="20">&nbsp;Bar</a>
+			<div style=" padding-left: 5px;padding-right: 5px;">
+			
+			
+			
+			</div>
+			</li>
             <li><a href="#" data-toggle="modal" data-target="#pie_modal"><img src="images\dashboard\pie_icon.png" height="20" width="20">&nbsp;Pie</a></li>
             <li><a href="#" data-toggle="modal" data-target="#line_modal"><img src="images\dashboard\line_icon.jpg" height="20" width="20">&nbsp;Line</a></li>
 			<li><a href="#" data-toggle="modal" data-target="#scatter_modal"><img src="images\dashboard\scatter_icon.png" height="20" width="20">&nbsp;Scatter</a></li>
@@ -498,36 +506,25 @@ $(function () {
 
 
 <!-- Add frames here-->
-<div class="frameWrap" style="width: 50%; height: 350px;">
+<div class="frameWrap" style="width: 50%; height: 350px;" id="frame1div">
 <iframe src="basicmap.html" style="border:10px solid grey"  class="myFrame context-menu-two box menu-1" id="frame1"></iframe>
 </div><br>
-<div class="frameWrap" style="width: 50%; height: 350px;" >
-<iframe src="shreya_image_pizza.html" style="border:10px solid grey" class="myFrame context-menu-two box menu-1" id="frame2"></iframe>
+<div class="frameWrap" style="width: 420px; height: 480px;" id="frame2div" >
+<iframe src="shreya_firemencap_pie1.html" style="border:10px solid grey" class="myFrame context-menu-two box menu-1" id="frame2"></iframe>
 </div>
 </td>
 
-<td  width="15%"  height="100%" id="datatd" style="background-color:#E0E0FF" >
-	
-	<div id="data" width="100%" height="616" >
-		<table  width="100%" height="616"  >
-			<tr  width="100%" height="616" >
-				<td  width="3%" height="100%" valign="center" >
-					
-					<img onclick="hide_data();" src="images\dashboard\hide.png" height="15" width="10"   /> 
-					
-				</td >
-				<td width="97%" height="100%" valign="top"> 
-					<span style="font-size:14x">
+<td  width="2%"  height="100%"  style="background-color:#E0E0FF" >
+	<img onclick="hide_show_data();" alt="open" src="images\dashboard\hide.png" height="15" width="10"  id="showhide" /> 
+</td>
+<td  width="13%"  height="100%" id="datatd" style="background-color:#E0E0FF" valign="top">
+	<div id="data" width="100%" height="100%" >
+				
 					<img src="images\dashboard\upload.png" height="30" width="30" /> Upload Data
-					</span>
-				</td>
-			</tr>   
-		</table>
-	</div>
-	<div style="display:none" id="nodata" width="100%" height="100%" >
-	   <img onclick="show_data();" src="images\dashboard\show.png" height="15" width="10" /> 
+					
 	</div>
 </td>
+
 </tr>
 </table>
 
