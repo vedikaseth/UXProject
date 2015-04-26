@@ -247,11 +247,18 @@ $(function(){
 			 var eleid = options.$trigger.attr('id') + 'div'
 			 document.getElementById(eleid).remove();
 			 }
+			 if(key == 'addtooltip'){
+			 //var mdl = document.getElementById("tooltip_modal")
+			 //mdl.aria-hidden = "false"
+			  $('#tooltip_modal').modal('show');
+			 //data-toggle="modal"; data-target="#tooltip_modal";
+			 }
+			 
            
         },
         items: {
             "interact": {name: "Create Interaction", icon: "none"},
-			"edit": {name: "Edit", icon: "edit"},
+			"addtooltip": {name: "Add ToolTip", icon: "edit"},
             "delete": {name: "Delete", icon: "delete"},
            
         }
@@ -283,7 +290,6 @@ $(function () {
 			<li><a href="#"><img src="images\dashboard\download.png" height="20" width="20"></a></li>
             <li><a href="#"><img src="images\dashboard\help.png" height="20" width="20"></a></li>
 			<li><a href="#" id="addText">Add Text</a></li>
-			<li><a href="#" id="addText">Add Tool-Tip</a></li>
           </ul>
 		  <ul class="nav navbar-nav navbar-right">
 			<li><a href="#">Sign Out</a></li>
@@ -311,12 +317,41 @@ $(function () {
 			<li><a href="#" data-toggle="modal" data-target="#scatter_modal"><img src="images\dashboard\scatter_icon.png" height="20" width="20">&nbsp;Scatter</a></li>
 			<li><a href="#" data-toggle="modal" data-target="#timeline_modal"><img src="images\dashboard\tt_icon.png" height="20" width="20">&nbsp;TimeLine</a></li>
 			<li><a href="#" data-toggle="modal" data-target="#map_modal"><img src="images\dashboard\map.png" height="20" width="20">&nbsp;Map</a></li>
-          </ul>
+          <a href="dashboard_frame1new.html"><img src="images/dashboard/mapsidepanel.png" width="100%"/></a>
+		  </ul>
        
     </span>
 </div>
 
 <!-- Modal -->
+<div class="modal fade" id="tooltip_modal" tabindex="-1" role="dialog" aria-labelledby="tooltip_modal_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+       <center> <h4 class="modal-title" id="tooltip_modal_label">TOOL TIP</h4> </center>
+      </div>
+      <div class="modal-body">
+     
+	 <table width="100%">
+	 <tr width="100%">
+	 <td width="100%">
+		<center>
+	 <img id="bar_chart" src="images\dashboard\tooltip_modal.png" alt="normal" >
+		</center>	
+	  </td>
+	  
+	  </table>
+	  
+      </div>
+      <div class="modal-footer"><center>
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset_option('bar');">Cancel</button>
+        <button type="button" class="btn btn-primary" >Insert</button></center>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="modal fade" id="bar_modal" tabindex="-1" role="dialog" aria-labelledby="bar_modal_label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -366,11 +401,8 @@ $(function () {
 	  
       </div>
       <div class="modal-footer"><center>
-	  <form>
         <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset_option('pie');">Cancel</button>
-        <!--button type="button" class="btn btn-primary" >Insert</button-->
-		<button type="submit" formaction="dashboard_samplepie.html" class="btn btn-primary" >Insert</button>
-		</form></center>
+        <button type="button" class="btn btn-primary" >Insert</button></center>
       </div>
     </div>
   </div>
@@ -512,9 +544,11 @@ $(function () {
 <div class="frameWrap" style="width: 50%; height: 350px;" id="frame1div">
 <iframe src="basicmap.html" style="border:10px solid grey"  class="myFrame context-menu-two box menu-1" id="frame1"></iframe>
 </div><br>
-<!--div class="frameWrap" style="width: 420px; height: 480px;" id="frame2div" >
-<iframe src="shreya_firemencap_pie1.html" style="border:10px solid grey" class="myFrame context-menu-two box menu-1" id="frame2"></iframe>
-</div-->
+<!--
+<div class="frameWrap" style="width: 420px; height: 480px;" id="frame2div" >
+<!--iframe src="shreya_firemencap_pie1.html" style="border:10px solid grey" class="myFrame context-menu-two box menu-1" id="frame2"></iframe>
+</div>
+-->
 </td>
 
 <td  width="2%"  height="100%"  style="background-color:#E0E0FF" >
