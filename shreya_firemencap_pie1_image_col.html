@@ -85,7 +85,7 @@
 				})
 				.on("mouseover", function() {
 					d3.select(this)
-					.attr("fill", "blue");
+					.attr("fill", "red");
 					//return tooltip.style("visibility", "visible");
 				})
 				.on("mouseout", function(d,i) {
@@ -94,11 +94,11 @@
 					.attr("fill", function(d, j) { 
 						
 						if(i==0)
-							return "url(#image1)"; 
+						return "url(#image1)"; 
 						if(i==1)
-							return "url(#image2)"; 
+							return "blue"; 
 						if(i==2)
-							return "url(#image3)"; 
+							return "url(#image1)";  
 						if(i==3)
 							return "url(#image4)"; 
 						if(i==4)
@@ -124,7 +124,7 @@
    <svg id="mySvg" width="80" height="80">
       <defs id="mdef">
         <pattern id="image1" x="0" y="0" height="100%" width="100%">
-          <image x="10" y="60" width="120" height="120" xlink:href="images/pie/blackcap_png.png"></image>
+          <image x="15" y="40" width="120" height="120" xlink:href="images/pie/blackcap_png.png"></image>
 		  </pattern>
 		  <pattern id="image2" x="0" y="0" height="100%" width="100%">
           <image x="60" y="10" width="120" height="120" xlink:href="images/pie/yellowcap_png.png"></image>
