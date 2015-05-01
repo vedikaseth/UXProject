@@ -1,12 +1,12 @@
-<!DOCTYPE html>
 <html>
   <head>    
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Testing Pie Chart</title>
-    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.1.3"></script>
-    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.geom.js?2.1.3"></script>
-    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.layout.js?2.1.3"></script>
-
+    <script src="d3\d3.js"></script>
+	<script src="jquery/external/jquery/jquery.js"></script>
+	<script src="jquery/jquery-ui.js"></script>
+	<script src="jquery/jquery.ui.position.js"></script>
+	<script src="jquery/jquery.contextMenu.js"></script>
     <style type="text/css">
         .slice text {
             font-size: 12pt;
@@ -15,10 +15,55 @@
         }  
 			
     </style>
+	<link href="jquery/jquery.contextMenu.css" rel="stylesheet">
+	<script>
+	$(function(){
+    $.contextMenu({
+        selector: '.context-menu-one', 
+        callback: function(key, options) {
+			 var m = "clicked: " + key;
+			 if(key == 'delete'){
+			 document.getElementById(options.$trigger.attr('id')).remove();
+			 }
+			 if(key == 'edit'){
+			  parent.$('#tooltip_modal').modal('show');
+			 }
+           
+        },
+        items: {
+            "edit": {name: "Edit", icon: "edit"},
+            "delete": {name: "Delete", icon: "delete"},
+           
+        }
+    });
+	
+	$.contextMenu({
+        selector: '.context-menu-two', 
+        callback: function(key, options) {
+			 var m = "clicked: " + key;
+			 if(key == 'delete'){
+			 var eleid = options.$trigger.attr('id') + 'div'
+			 window.parent.document.getElementById('frame2div').remove();
+			 }
+			 if(key == 'addtooltip'){
+			  $('#tooltip_modal').modal('show');
+			 }
+           
+        },
+        items: {
+            "interact": {name: "Create Interaction", icon: "none"},
+			"addtooltip": {name: "Add ToolTip", icon: "edit"},
+            "delete": {name: "Delete", icon: "delete"},
+           
+        }
+    });
+   
+});
+	</script>
   </head>
-  <body>
-    <pre><h2>    Firestation Platoons </h2></pre>
-    <script type="text/javascript">
+<body>
+<pre><h2 >    Firestation Platoons </h2></pre>
+<script type="text/javascript">
 
     var w = 300,                        //width
     h = 300,                            //height
@@ -59,6 +104,7 @@
 				.attr("stroke-width", 0.5)
                 .attr("fill", "#ffffff") //"url(#image)") //set the color for each slice to be chosen from the color function defined above
                 .attr("d", arc)                                    //this creates the actual SVG path using the associated data (pie) with the arc drawing function
+				.attr("class","context-menu-one")
 				.on("click",function(d,i){
 					if(i==0)
 						location="shreya.html";
@@ -67,6 +113,7 @@
 					if(i==2)
 						location="index1.html";
 				})
+				
 					
 		
         arcs.append("svg:text")                                     //add a label to each slice
@@ -80,8 +127,8 @@
             .text(function(d, i) { return data[i].label; });        //get the label from our original data array
         
     </script>
-  
-   <svg id="mySvg" width="80" height="80">
+   
+   <svg id="mySvg" width="80" height="80" >
       <defs id="mdef">
         <pattern id="image1" x="0" y="0" height="100%" width="100%">
           <image x="0" y="0" width="150" height="180" xlink:href="pizza_topping.png"></image>
