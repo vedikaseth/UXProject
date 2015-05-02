@@ -111,9 +111,9 @@ if(cur_chart == 'bar'){
 	ele.src='images\\dashboard\\bar_normal.png'
 	ele.alt="normal";
 	var prev_ele = document.getElementById("prev_bar");
-	prev_ele.style.display = "block";
-	var prev_ele = document.getElementById("next_bar");
 	prev_ele.style.display = "none";
+	var prev_ele = document.getElementById("next_bar");
+	prev_ele.style.display = "block";
 	var text_ele = document.getElementById("bar_text");
 	text_ele.textContent = "Normal Bar Graph";
 	}
@@ -346,7 +346,11 @@ $(function () {
 	 <tr width="100%">
 	 <td width="100%">
 		<center>
+<<<<<<< HEAD
 	 <img id="tool_tip_img" src="images\dashboard\tooltip_modal.png" alt="img1" onclick="change_tooltip_color();" >
+=======
+	 <img id="tooltip" src="images\dashboard\tooltip_modal.png" alt="normal" >
+>>>>>>> 5ec99a4db6435a389b15a3f332370c15d762315b
 		</center>	
 	  </td>
 	  

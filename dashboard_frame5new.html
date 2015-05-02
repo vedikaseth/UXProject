@@ -122,9 +122,9 @@ if(cur_chart == 'bar'){
 	ele.src='images\\dashboard\\bar_normal.png'
 	ele.alt="normal";
 	var prev_ele = document.getElementById("prev_bar");
-	prev_ele.style.display = "none";
-	var prev_ele = document.getElementById("next_bar");
 	prev_ele.style.display = "block";
+	var prev_ele = document.getElementById("next_bar");
+	prev_ele.style.display = "none";
 	var text_ele = document.getElementById("bar_text");
 	text_ele.textContent = "Normal Bar Graph";
 	}
@@ -331,6 +331,19 @@ if(alt == "pie_green"){
 
 }
 
+function change_tooltip_color(){
+var ele = document.getElementById("tool_tip_img");
+var alt_text = ele.alt
+if (alt_text == 'img1'){
+ele.src='images\\dashboard\\bar_yellow.png'
+ele.alt="img2";
+}
+if (alt_text == 'img2'){
+ele.src='images\\dashboard\\tooltip_modal_2.png'
+ele.alt="img1";
+}
+
+}
 $(document).ready(function() {
         $(".draggableTB").draggable({
 			cancel: null,
@@ -393,6 +406,9 @@ $(function(){
         selector: '.context-menu-three', 
         callback: function(key, options) {
              var m = "clicked: " + key;
+             if(key == 'delete'){
+             document.getElementById(options.$trigger.attr('id')).remove();
+             }
              if(key == 'properties'){
              	
               
@@ -403,7 +419,7 @@ $(function(){
         },
         items: {
             "properties": {name: "Properties", icon: "edit"},
-            
+            "delete": {name: "Delete", icon: "delete"},
            
         }
     });
@@ -455,11 +471,6 @@ $(function () {
       
           <ul class="nav nav-sidebar" >
             <li><a href="#" data-toggle="modal" data-target="#bar_modal" ><img src="images\dashboard\bar_icon.png "  height="20" width="20">&nbsp;Bar</a>
-			<div style=" padding-left: 5px;padding-right: 5px;">
-			<a href="dashboard_frame4new.html"><img src="images/dashboard/barleftpanel.png" width="100%"/></a>
-			
-			
-			</div>
 			</li>
             <li><a href="#" data-toggle="modal" data-target="#pie_modal"><img src="images\dashboard\pie_icon.png" height="20" width="20">&nbsp;Pie</a></li>
             <!--a href="#" data-toggle="modal" data-target="#pie_change_style"><img src="images/pie/pie_2.png" width="100%"/></a-->
@@ -485,17 +496,19 @@ $(function () {
 	 <tr width="100%">
 	 <td width="100%">
 		<center>
-	 <img id="tooltip" src="images\dashboard\tooltip_modal.png" alt="normal" >
+	  <img id="tool_tip_img" src="images\dashboard\tooltip_modal.png" alt="img1" onclick="change_tooltip_color();" >
 		</center>	
 	  </td>
 	  
 	  </table>
 	  
       </div>
-      <div class="modal-footer"><center>
+	 
+      <div class="modal-footer"><center> <form>
         <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset_option('bar');">Cancel</button>
-        <button type="button" class="btn btn-primary" >Insert</button></center>
+        <button type="submit" class="btn btn-primary" formaction="dashboard_frame6new.html">Insert</button></center>  </form>
       </div>
+	 
     </div>
   </div>
 </div>
@@ -866,9 +879,16 @@ $(function () {
 
 
 
-<div class="frameWrap" style="width: 50%; height: 350px;" id="frame3div">
-<iframe src="samplebar.html" style="border:10px solid grey"  class="myFrame context-menu-two box menu-1" id="frame1"></iframe>
+<div class="frameWrap" style="width: 50%; height: 350px;" id="frame4div">
+<iframe src="tooltipjuhi.html" style="border:10px solid grey"  class="myFrame context-menu-two box menu-1" id="frame1"></iframe>
 </div>
+
+<div class="frameWrap" style="width: 800; height: 600px;" id="frame5div">
+<iframe src="ravina_bargraph_1.html" style="border:10px solid grey"  class="myFrame context-menu-two box menu-1" id="frame1"></iframe>
+</div>
+
+
+
 </td>
 <td  width="2%"  height="100%"  style="background-color:#E0E0FF" >
 	<img onclick="hide_show_data();" alt="open" src="images\dashboard\hide.png" height="15" width="10"  id="showhide" /> 

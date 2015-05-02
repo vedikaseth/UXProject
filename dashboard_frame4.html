@@ -17,8 +17,10 @@ cursor: hand;
     width:200px;
     float:right; 
 }
+#draggable { width: 150px; height: 150px; padding: 0.5em; }
 </style>
-
+<script src="jquery/external/jquery/jquery.js"></script>
+<script src="jquery/jquery-ui.js"></script>
 <script src="d3\d3.js"></script>
 <script>
 function hide_data(){
@@ -200,10 +202,9 @@ if(cur_chart == 'pie'){
 
 }
 
-$('#bar_modal').on('hidden.bs.modal', function (e) {
-  // do something...
-  reset_option('bar');
-})
+$(function() {
+    $( "#draggable" ).draggable();
+  });
 </script>
 <link href="bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -426,12 +427,16 @@ $('#bar_modal').on('hidden.bs.modal', function (e) {
   <center>WORKING CANVAS <br><br></center>
   <!-- Title  -->
 <input type="text" name="title" value="Sample Title"><br>
-
+<div height="400" style="border:1px solid black" > 
+<span id="draggable" style="border:1px solid black" >
+  Drag me around
+</span>
+</div>
 <iframe src="basicmap.html" style="border:none" width="48%" height="100%"></iframe>
 <iframe src="shreya_image_pizza.html" style="border:none" height="100%" width="48%"></iframe>
 <iframe src="tooltipjuhi.html" style="border:none" height="100%" width="47%"></iframe>
 <iframe src="bar_graph.html" style="border:none" height="100%" width="48%"></iframe>
-
+</div>
 </td>
 <td  width="15%"  height="100%" id="datatd" style="background-color:#E0E0FF" height="100%" >
 	
@@ -457,7 +462,7 @@ $('#bar_modal').on('hidden.bs.modal', function (e) {
 </td>
 </tr>
 </table>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 <script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
 
 </body>
