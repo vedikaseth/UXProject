@@ -314,92 +314,19 @@ var ele = document.getElementById("pie_change_option_1");
 var alt = ele.alt;
 
 
-if(alt == "pie_3"){
-	ele.src='images\\pie\\pie_4.png'
-	ele.alt="pie_4";
-}
-if(alt == "pie_4"){
-	ele.src='images\\pie\\pie_5.png'
-	ele.alt="pie_5";
-}
-if(alt == "pie_5"){
-	ele.src='images\\pie\\pie_6.png'
-	ele.alt="pie_6";
-}
-if(alt == "pie_6"){
-	ele.src='images\\pie\\pie_7.png'
-	ele.alt="pie_7";
-}
-if(alt == "pie_7"){
-	ele.src='images\\pie\\pie_8.png'
-	ele.alt="pie_8";
-}
-if(alt == "pie_8"){
-	ele.src='images\\pie\\pie_9.png'
-	ele.alt="pie_9";
-}
-if(alt == "pie_9"){
-	ele.src='images\\pie\\pie_10.png'
-	ele.alt="pie_10";
-}
-if(alt == "pie_10"){
-	ele.src='images\\pie\\imgprop_1.png'
-	ele.alt="imgprop_1";
-}
-if(alt == "imgprop_1"){
-	ele.src='images\\pie\\imgprop_2.png'
-	ele.alt="imgprop_2";
-}
-if(alt == "imgprop_2"){
-	ele.src='images\\pie\\imgprop_3.png'
-	ele.alt="imgprop_3";
-}
-if(alt == "imgprop_3"){
-	ele.src='images\\pie\\imgprop_3.png'
-	ele.alt="imgprop_4";
-}
-if(alt == "imgprop_4"){
-	ele.src='images\\pie\\imgprop_5.png'
-	ele.alt="imgprop_5";
-}
-if(alt == "imgprop_5"){
-	ele.src='images\\pie\\imgprop_6.png'
-	ele.alt="imgprop_6";
-}
 
-if(alt == "imgprop_6"){
-	ele.src='images\\pie\\pie_11.png'
-	ele.alt="pie_11";
-}
-if(alt == "pie_11"){
-	ele.src='images\\pie\\pie_12.png'
-	ele.alt="pie_12";
-}
-if(alt == "pie_12"){
-	ele.src='images\\pie\\pie_13.png'
-	ele.alt="pie_13";
-}
-if(alt == "pie_13"){
-	ele.src='images\\pie\\pie_14.png'
-	ele.alt="pie_14";
-}
-if(alt == "pie_14"){
-	ele.src='images\\pie\\pie_15.png'
-	ele.alt="pie_15";
-}
-if(alt == "pie_15"){
+if(alt == "pie_18"){
 	ele.src='images\\pie\\pie_16.png'
 	ele.alt="pie_16";
 }
 if(alt == "pie_16"){
-	ele.src='images\\pie\\pie_17.png'
-	ele.alt="pie_17";
+	ele.src='images\\pie\\pie_green.png'
+	ele.alt="pie_green";
 }
-if(alt == "pie_17"){
-	ele.src='images\\pie\\pie_18.png'
+if(alt == "pie_green"){
+	ele.src='images\\pie\\pie_green_prop.png'
 	ele.alt="pie_18";
 }
-
 
 
 }
@@ -489,6 +416,11 @@ $(function(){
 
 $(function () {
     $(".frameWrap")
+    .resizable()
+	.draggable({ containment: "#canvastd",cursor: "move" });
+});
+$(function () {
+    $(".frameWrap1")
     .resizable()
 	.draggable({ containment: "#canvastd",cursor: "move" });
 });
@@ -647,7 +579,7 @@ $(function () {
       <div class="modal-footer"><center>
 	  <form method='get'>
         <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
-        <button type="submit" class="btn btn-primary" formaction="dashboard_frame3new.html">Done</button>
+        <button type="submit" class="btn btn-primary" formaction="dashboard_frame2new.html">Done</button>
 	</form></center>
       </div>
     </div>
@@ -675,7 +607,7 @@ $(function () {
       <div class="modal-footer"><center>
 	  <form method='get'>
         <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
-        <button type="submit" class="btn btn-primary" formaction="dashboard_frame2new.html">Done</button>
+        <button type="submit" class="btn btn-primary" formaction="dashboard_frame3new.html">Done</button>
 	</form></center>
       </div>
     </div>
@@ -863,6 +795,10 @@ $(function () {
         arcs.append("svg:path")
 				.attr("stroke", "black")
 				.attr("stroke-width", 0.5)
+				.attr("class",function(d,i){
+					return "frameWrap";
+
+				})
                 .attr("fill", /*"url(#image)")*/function(d, i) { 
 					if(i==0)
 						return "url(#image1)"; 
@@ -917,7 +853,7 @@ $(function () {
    </center>
    <svg id="mySvg" width="80" height="80" >
       <defs id="mdef">
-       <pattern id="image1" x="0" y="0" height="100%" width="100%">
+       <pattern id="image1"  x="0" y="0" height="100%" width="100%">
           <image x="15" y="40" width="120" height="120" xlink:href="images/pie/blackcap_png.png"></image>
 		  </pattern>
 	  </defs>
