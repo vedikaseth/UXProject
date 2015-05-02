@@ -30,12 +30,9 @@
                 height: auto;
                 padding: 10px;
                 line-height: 1;
-                color: rgba(0, 255, 0, 0.8);
-                background-color:rgba(0,0,0,0.8);
-                border-top: 5px solid #000;
-                border-top: 5px solid hsla(0, 0%, 20%, 0.9);
-                border-right: 5px solid transparent;
-                border-left: 5px solid transparent;
+       
+                background-color:#FF9933;
+               
                 -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
                 -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
                 box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
@@ -61,7 +58,7 @@
     <body>
 
         <h1>
-        Frequency of each incident for Week 2<br/></h1>
+        Frequency of each incident for Week 1<br/></h1>
        <center>
        
         <div id="d3-tooltip" class="hidden">
@@ -75,12 +72,12 @@
 			var h = 200;
 			var barPadding = 1;
             // Your beautiful D3 code will go here
-			var dataset = [25, 39, 75, 44, 89, 91];
+			var dataset = [44, 50, 72, 86, 49, 23];
             var typeset = ["No-fire unintentional Alarm", "Smoke detector-malfunction", "False alarm", "Dispatched/Cancelled Enroute", "Service Call", "Gas leak"];
             
             var margin = {top: 40, right: 20, bottom: 30, left: 80},
-            width = 960 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
+            width = 700 - margin.left - margin.right,
+            height = 400 - margin.top - margin.bottom;
            
            
 
