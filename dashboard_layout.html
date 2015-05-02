@@ -199,6 +199,20 @@ case "map":
 	break;
 }
 
+
+}
+function change_tooltip_color(){
+var ele = document.getElementById("tool_tip_img");
+var alt_text = ele.alt
+if (alt_text == 'img1'){
+ele.src='images\\dashboard\\bar_yellow.png'
+ele.alt="img2";
+}
+if (alt_text == 'img2'){
+ele.src='images\\dashboard\\tooltip_modal_2.png'
+ele.alt="img1";
+}
+
 }
 
 $(document).ready(function() {
@@ -332,7 +346,7 @@ $(function () {
 	 <tr width="100%">
 	 <td width="100%">
 		<center>
-	 <img id="bar_chart" src="images\dashboard\tooltip_modal.png" alt="normal" >
+	 <img id="tool_tip_img" src="images\dashboard\tooltip_modal.png" alt="img1" onclick="change_tooltip_color();" >
 		</center>	
 	  </td>
 	  
