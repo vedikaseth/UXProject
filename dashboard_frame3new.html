@@ -393,9 +393,6 @@ $(function(){
         selector: '.context-menu-three', 
         callback: function(key, options) {
              var m = "clicked: " + key;
-             if(key == 'delete'){
-             document.getElementById(options.$trigger.attr('id')).remove();
-             }
              if(key == 'properties'){
              	
               
@@ -406,7 +403,7 @@ $(function(){
         },
         items: {
             "properties": {name: "Properties", icon: "edit"},
-            "delete": {name: "Delete", icon: "delete"},
+            
            
         }
     });

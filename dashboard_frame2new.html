@@ -393,9 +393,7 @@ $(function(){
         selector: '.context-menu-three', 
         callback: function(key, options) {
              var m = "clicked: " + key;
-             if(key == 'delete'){
-             document.getElementById(options.$trigger.attr('id')).remove();
-             }
+             
              if(key == 'properties'){
              	
               
@@ -405,8 +403,8 @@ $(function(){
            
         },
         items: {
-            "properties": {name: "Properties", icon: "edit"},
-            "delete": {name: "Delete", icon: "delete"},
+            "properties": {name: "Edit Properties", icon: "edit"},
+            
            
         }
     });
@@ -737,7 +735,7 @@ $(function () {
 
 </td>
 
-<td  width="70%" id="canvastd" valign="top" style="height: 100%">
+<td  width="75%" id="canvastd" valign="top" style="height: 100%">
 <br><center> WORKING CANVAS </center> 
   
   <!-- Title  -->
@@ -755,7 +753,7 @@ $(function () {
 <div class="frameWrap" style="width: 420px; height: 480px;" id="frame2div" >
 <div style="border:10px solid grey" class="myFrame context-menu-two box menu-1" >
 <div class="myFrame context-menu-three box menu-1" id="frame_2">
-<h2 ><center>    Firestation Platoons </center></h2>
+<h2><b><font face="Times New Roman"><center>    Firestation Platoons for Fire Station A</center></font></b></h2>
 <center><script type="text/javascript">
 
     var w = 300,                        //width
@@ -867,10 +865,11 @@ $(function () {
 <td  width="2%"  height="100%"  style="background-color:#E0E0FF" >
 	<img onclick="hide_show_data();" alt="open" src="images\dashboard\hide.png" height="15" width="10"  id="showhide" /> 
 </td>
-<td  width="13%"  height="100%" id="datatd" style="background-color:#E0E0FF" valign="top">
+<td  width="9%"  height="100%" id="datatd" style="background-color:#E0E0FF" valign="top">
 	<div id="data" width="100%" height="100%" >
 				
 					<img src="images\dashboard\upload.png" height="30" width="30" /> Upload Data
+					<img src="images\dashboard\dataset_with_data.png"/>
 					
 	</div>
 </td>
